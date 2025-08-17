@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Tech 101</title>
+    <!-- Tautan ke Tailwind CSS untuk styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Styling dasar untuk body: font, tinggi baris, dan latar belakang */
+        body {
+            font-family: 'Arial', sans-serif; /* Menggunakan font sans-serif umum */
+            line-height: 1.8; /* Meningkatkan tinggi baris untuk keterbacaan yang lebih baik */
+            background-color: #f4f7f6; /* Latar belakang terang yang sedikit hangat */
+            color: #333; /* Teks gelap */
+        }
+        /* Styling untuk judul utama (h1, h2, h3) */
+        h1, h2, h3 {
+            color: #1a202c; /* Judul yang lebih gelap */
+        }
+        /* Styling untuk bagian header */
+        header {
+            background: linear-gradient(to right, #4a0e9b, #2c3e50); /* Latar belakang gradien untuk header */
+            color: #e0e0e0; /* Teks lebih terang di header */
+            padding: 30px 20px; /* Padding lebih banyak */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan lebih kuat untuk header */
+        }
+        /* Styling untuk judul utama di header */
+        header h1 {
+            font-size: 3rem; /* Ukuran judul utama lebih besar */
+            font-weight: 700;
+            color: #ffffff; /* Judul putih agar jelas */
+        }
+        /* Styling untuk subtitle di header */
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #cccccc; /* Subtitle lebih terang */
+        }
+
+        /* Styling untuk container konten utama */
+        .container {
+            background-color: #e9ecef; /* Latar belakang abu-abu terang untuk konten utama */
+            padding: 30px; /* Padding lebih banyak */
+            border-radius: 12px; /* Sudut lebih membulat */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Bayangan lebih jelas */
+            margin-top: 20px; /* Ruang di bawah header */
+        }
+
+        /* Styling untuk setiap bagian (section) dalam konten utama */
+        section {
+            margin-bottom: 3rem; /* Ruang lebih banyak antar bagian */
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ced4da; /* Garis bawah lebih terang */
+            opacity: 0; /* Mulai tersembunyi untuk animasi */
+            transform: translateY(20px); /* Mulai sedikit di bawah */
+            animation: fadeIn 0.8s ease-out forwards; /* Terapkan animasi */
+        }
+        /* Penundaan animasi yang berbeda untuk setiap bagian (staggering) */
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
+        section:nth-child(5) { animation-delay: 1.0s; }
+        section:nth-child(6) { animation-delay: 1.2s; }
+        section:nth-child(7) { animation-delay: 1.4s; }
+
+
+        /* Menghapus border dan margin untuk bagian terakhir */
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Styling untuk judul bagian (h2) */
+        h2 {
+            font-size: 2.2rem; /* Ukuran judul bagian lebih besar */
+            font-weight: 600;
+            color: #1a202c; /* Warna gelap untuk judul bagian */
+            margin-bottom: 1.5rem; /* Ruang lebih banyak di bawah judul bagian */
+            border-left: 5px solid #4a0e9b; /* Border warna aksen */
+            padding-left: 10px;
+        }
+
+        /* Styling untuk judul sub-bagian (h3) */
+        h3 {
+            font-size: 1.6rem; /* Ukuran sub-judul lebih besar */
+            font-weight: 600;
+            color: #0056b3; /* Warna biru untuk sub-judul */
+            margin-top: 2rem; /* Ruang lebih banyak di atas sub-judul */
+            margin-bottom: 1rem; /* Ruang lebih banyak di bawah sub-judul */
+        }
+
+        /* Styling untuk paragraf dan item list di konten utama */
+        main p, main li {
+            font-size: 1.25rem; /* Ukuran font lebih besar untuk teks konten */
+            font-weight: bold; /* Membuat teks konten menjadi bold */
+            color: #555; /* Warna sedikit lebih terang untuk teks body */
+        }
+
+        /* Styling untuk daftar tidak berurutan (unordered lists) */
+        ul {
+            margin-top: 1.5rem; /* Ruang lebih banyak di atas daftar */
+        }
+
+        /* Styling untuk item daftar (list items) */
+        li {
+            margin-bottom: 0.8rem; /* Ruang lebih banyak antar item daftar */
+        }
+
+        /* Styling untuk tautan (links) */
+        a {
+            color: #007bff; /* Biru standar untuk tautan */
+            text-decoration: none;
+            transition: color 0.3s ease; /* Transisi warna halus saat hover */
+        }
+        /* Styling untuk tautan saat di-hover */
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3; /* Biru lebih gelap saat hover */
+        }
+
+        /* Styling untuk footer */
+        footer {
+            background-color: #34495e; /* Warna footer lebih gelap */
+            color: #b0b0b0; /* Teks copyright lebih terang */
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px; /* Ruang lebih banyak di atas footer */
+        }
+        /* Styling untuk teks copyright di footer */
+        footer p {
+            font-size: 1rem; /* Ukuran font standar untuk copyright */
+        }
+
+        /* Keyframes untuk animasi fade-in */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bagian Header -->
+    <header>
+        <h1>Ethical Tech 101</h1>
+        <p>Teknologi sebagai alat untuk kemanusiaan, bukan sebaliknya.</p>
+    </header>
+
+    <!-- Area konten utama -->
+    <main class="container mx-auto">
+        <!-- Bagian: Mengapa Etika Teknologi Penting? -->
+        <section>
+            <h2>Mengapa Etika Teknologi Penting?</h2>
+            <p>
+                Dari sudut pandang antropologi, teknologi bukan sekadar alat, melainkan pembentuk budaya dan relasi sosial. Memahami etika teknologi berarti menjaga agar inovasi digital selaras dengan nilai-nilai kemanusiaan, mencegah disrupsi yang merugikan, dan memastikan teknologi melayani keragaman manusia, bukan mendominasinya. Ini adalah langkah krusial untuk masa depan digital yang inklusif dan berkelanjutan.
+            </p>
+        </section>
+
+        <!-- Bagian: Topik Inti Etika Teknologi -->
+        <section>
+            <h2>Topik Inti Etika Teknologi</h2>
+            <ul>
+                <li><strong>Privasi Data:</strong> Hak individu atas informasi pribadi di era digital.</li>
+                <li><strong>Bias dalam AI:</strong> Bagaimana algoritma dapat mencerminkan atau memperkuat prasangka sosial.</li>
+                <li><strong>Dampak Sosial Teknologi:</strong> Pengaruh teknologi terhadap interaksi manusia, komunitas, dan struktur kekuasaan.</li>
+            </ul>
+        </section>
+
+        <!-- Bagian: Etika dalam Cybersecurity -->
+        <section>
+            <h2>Etika dalam Cybersecurity</h2>
+            <h3>3 Prinsip Etis Cybersecurity:</h3>
+            <ul>
+                <li>Integritas: Menjaga keakuratan dan kelengkapan informasi.</li>
+                <li>Kerahasiaan: Melindungi data dari akses tidak sah.</li>
+                <li>Ketersediaan: Memastikan sistem dan data dapat diakses saat dibutuhkan oleh pihak yang berwenang.</li>
+            </ul>
+            <h3>4 Kebiasaan Higienis Digital:</h3>
+            <ul>
+                <li>Gunakan kata sandi yang kuat dan unik.</li>
+                <li>Aktifkan otentikasi dua faktor.</li>
+                <li>Waspadai email phishing dan tautan mencurigakan.</li>
+                <li>Perbarui perangkat lunak secara teratur.</li>
+            </ul>
+        </section>
+
+        <!-- Bagian: Blockchain untuk Kebaikan -->
+        <section>
+            <h2>Blockchain untuk Kebaikan</h2>
+            <h3>3 Use Case "for Good":</h3>
+            <ul>
+                <li>Pelacakan rantai pasok yang transparan untuk produk berkelanjutan.</li>
+                <li>Identitas digital yang aman untuk pengungsi dan populasi rentan.</li>
+                <li>Sistem voting yang aman dan tidak dapat dimanipulasi.</li>
+            </ul>
+            <p>
+                Namun, potensi blockchain harus diimbangi dengan tata kelola yang matang dan pemahaman konteks sosial agar tidak menciptakan kesenjangan baru.
+            </p>
+        </section>
+
+        <!-- Bagian: Insight dari Antropologi -->
+        <section>
+            <h2>Insight dari Antropologi</h2>
+            <ul>
+                <li><strong>Praktik Harian:</strong> Amati bagaimana teknologi mengubah ritual sosial, komunikasi keluarga, atau cara kita bekerja. Kesadaran ini membantu kita menggunakan teknologi dengan lebih mindful.</li>
+                <li><strong>Desain Peka Budaya:</strong> Pertimbangkan latar belakang budaya dan nilai-nilai lokal saat merancang atau mengimplementasikan teknologi agar relevan dan diterima masyarakat.</li>
+            </ul>
+        </section>
+
+        <!-- Bagian: Referensi -->
+        <section>
+            <h2>Referensi</h2>
+            <ul>
+                <li><a href="https://www.sciencedirect.com/topics/social-sciences/ethics-of-technology" class="text-blue-600 hover:underline">Ethical Technology Overview (ScienceDirect)</a></li>
+                <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-04036-8_9" class="text-blue-600 hover:underline">Cybersecurity Ethics (Springer Link)</a></li>
+                <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0308596124000156" class="text-blue-600 hover:underline">Blockchain and Society (ScienceDirect)</a></li>
+                <li><a href="https://www.anthroencyclopedia.com/entry/technology" class="text-blue-600 hover:underline">Anthropology of Technology (AnthroEncyclopedia)</a></li>
+            </ul>
+        </section>
+
+        <!-- Bagian: Kontak -->
+        <section>
+            <h2>Kontak</h2>
+            <p>
+                Untuk pertanyaan lebih lanjut, hubungi kami di <a href="mailto:natatether@proton.me" class="text-blue-600 hover:underline">natatether@proton.me</a>.
+            </p>
+        </section>
+    </main>
+
+    <!-- Bagian Footer -->
+    <footer>
+        <p>&copy; 2025 Ethical Tech 101</p>
+    </footer>
+</body>
+</html>
